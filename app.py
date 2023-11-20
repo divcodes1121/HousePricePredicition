@@ -13,20 +13,17 @@ def main():
         return flask.render_template('main.html')
 
     if flask.request.method == 'POST':
-        rooms = flask.request.form['rooms']
-        bathroom = flask.request.form['bathroom']
-        landsize = flask.request.form['landsize']
-        lattitude = flask.request.form['lattitude']
-        longtitude = flask.request.form['longtitude']
-        distance = flask.request.form['distance']
-        car = flask.request.form['car']
-        buildingarea = flask.request.form['buildingarea']
-        yearbuilt = flask.request.form['yearbuilt']
-        propertycount = flask.request.form['propertycount']
+        # Update the variable names and form fields accordingly
+        lot_frontage = flask.request.form['lot_frontage']
+        lot_area = flask.request.form['lot_area']
+        year_built = flask.request.form['year_built']
+        first_floor_sf = flask.request.form['first_floor_sf']
+        second_floor_sf = flask.request.form['second_floor_sf']
+        # Add more variables as needed
 
         input_variables = pd.DataFrame(
-            [[rooms, bathroom, landsize, lattitude, longtitude, distance, car, landsize, buildingarea, yearbuilt, propertycount]],
-            columns=['Rooms', 'Bathroom', 'Landsize', 'Lattitude', 'Longtitude', 'Distance', 'Car', 'Landsize', 'BuildingArea', 'YearBuilt', 'Propertycount'],
+            [[lot_frontage, lot_area, year_built, first_floor_sf, second_floor_sf]],
+            columns=['LotFrontage', 'LotArea', 'YearBuilt', '1stFlrSF', '2ndFlrSF'],
             dtype='float',
             index=['input']
         )
@@ -34,7 +31,8 @@ def main():
         predictions = model.predict(input_variables)[0]
         print(predictions)
 
-        return flask.render_template('main.html', original_input={'Rooms': rooms, 'Bathroom': bathroom, 'Landsize': landsize, 'Lattitude': lattitude, 'Longtitude': longtitude, 'Distance': distance, 'Car': car, 'Landsize': landsize, 'BuildingArea': buildingarea, 'YearBuilt': yearbuilt, 'Propertycount': propertycount},
+        return flask.render_template('main.html', 
+                                     original_input={'LotFrontage': lot_frontage, 'LotArea': lot_area, 'YearBuilt': year_built, '1stFlrSF': first_floor_sf, '2ndFlrSF': second_floor_sf},
                                      result=predictions)
 
 if __name__ == '__main__':
