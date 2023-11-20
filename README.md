@@ -14,6 +14,7 @@ Table of Contents:
 - Getting Started
 - Project Structure
 - Usage
+- Running the Flask Application
 - Results
 - Contributing
 - License
@@ -30,6 +31,7 @@ Dependencies:
 
 - Python 3.x
 - Jupyter Notebook
+- Flask (for running the web application)
 - [List any additional dependencies]
 
 Install the required dependencies using:
@@ -58,6 +60,10 @@ Project Structure:
 |   |-- [source code for the project]
 |-- results/
 |   |-- [store model outputs, predictions, etc.]
+|-- web_app/
+|   |-- app.py (Flask web application)
+|   |-- templates/
+|       |-- index.html
 |-- README.txt
 |-- requirements.txt
 |-- [any other relevant files]
@@ -65,6 +71,18 @@ Project Structure:
 Usage:
 
 [Provide instructions on how to use the code, run the notebooks, and reproduce the results.]
+
+Running the Flask Application:
+
+1. Navigate to the `web_app` directory:
+
+cd web_app
+
+2. Run the Flask application:
+
+python app.py
+
+3. Open a web browser and go to http://localhost:5000 to access the web application.
 
 Results:
 
@@ -77,3 +95,4 @@ Contributions are welcome! Please follow the CONTRIBUTING.md guidelines.
 License:
 
 This project is licensed under the [License Name] - see the LICENSE.md file for details.
+
